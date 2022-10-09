@@ -15,7 +15,10 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float RotationSpeed = 5f;
     private float _angle;
-
+    [SerializeField]
+    private GameObject _attack;
+    [SerializeField]
+    private float _attackSpeed = 4f;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +46,14 @@ public class Player : MonoBehaviour
         }
         _lookRotation = Quaternion.AngleAxis(_angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, RotationSpeed * Time.deltaTime);
-
+        if ( _rigi.velocity.magnitude >= _attackSpeed)
+        {
+            _attack.SetActive(true);
+        }
+        else
+        {
+            _attack.SetActive(false);
+        }
 
         if (transform.position.y > 8.5f)
         {
