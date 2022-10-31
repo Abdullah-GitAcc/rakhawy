@@ -9,11 +9,18 @@ public class Enemy : MonoBehaviour
     private float _speed = 5f;
     [SerializeField]
     private float _BackSpeed = 2f;
+    private Player p;
 
     // Start is called before the first frame update
     void Start()
     {
         _rigi = GetComponent<Rigidbody2D>();
+        p = GameObject.Find("Player").GetComponent<Player>();
+        if (p == null)
+        {
+            Debug.Log("Player is NULL");
+
+        }
     }
 
     // Update is called once per frame
@@ -27,6 +34,16 @@ public class Enemy : MonoBehaviour
         if (transform.position.x < -14.5f)
         {
             transform.position = new Vector2(14.5f, transform.position.y);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player_Weapon")
+        {
+            p.Enemy1 = true;
+            p.SetScore();
+            Destroy(this.gameObject);
         }
     }
     IEnumerator EnemyMovement()

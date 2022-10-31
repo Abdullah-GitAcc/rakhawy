@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     private GameObject _attack;
     [SerializeField]
     private float _attackSpeed = 4f;
+    public bool Enemy1 = false;
+    public bool collectable1 = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -98,8 +100,18 @@ public class Player : MonoBehaviour
     }
     public void SetScore()
     {
-        _score += 10;
-        _ui.ViewScore(_score);
+        if (collectable1 == true)
+        {
+            _score += 10;
+            _ui.ViewScore(_score);
+        }
+        if (Enemy1 == true)
+        {
+            _score += 20;
+            _ui.ViewScore(_score);
+        }
+        collectable1 = false;
+        Enemy1 = false;
     }
 
 }
