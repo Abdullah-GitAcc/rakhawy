@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float _BackSpeed = 2f;
     private Player p;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +45,10 @@ public class Enemy : MonoBehaviour
             p.Enemy1 = true;
             p.SetScore();
             Destroy(this.gameObject);
+        }
+        if(other.tag == "Player")
+        {
+            Destroy(p.gameObject);
         }
     }
     IEnumerator EnemyMovement()
