@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     private float _attackSpeed = 4f;
     public bool Enemy1 = false;
     public bool collectable1 = false;
-    private SpawnManager _SpawnManager;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
             Debug.Log("UI_Manager is null");
 
         }
-        _SpawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        
     }
 
     // Update is called once per frame
@@ -99,14 +99,7 @@ public class Player : MonoBehaviour
         }
         */
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Enemy")
-        {
-            _SpawnManager._isdead = true;
-            Destroy(this.gameObject);
-        }
-    }
+
     public void SetScore()
     {
         if (collectable1 == true)

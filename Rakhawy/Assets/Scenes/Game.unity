@@ -578,6 +578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _EnemyPrefab: {fileID: 3480650783990991421, guid: c05c4af1e1bbac94aafdb2a2a8b43165, type: 3}
   _EnemyContainer: {fileID: 1695030476}
+  _isdead: 0
 --- !u!1001 &839308215
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1126,6 +1127,14 @@ PrefabInstance:
     - target: {fileID: 617113147, guid: e960bc90490fd144d892c1647e90b9a1, type: 3}
       propertyPath: m_Offset.y
       value: 0.32582533
+      objectReference: {fileID: 0}
+    - target: {fileID: 617113147, guid: e960bc90490fd144d892c1647e90b9a1, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 617113147, guid: e960bc90490fd144d892c1647e90b9a1, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7955121394902171336, guid: e960bc90490fd144d892c1647e90b9a1, type: 3}
       propertyPath: m_RootOrder

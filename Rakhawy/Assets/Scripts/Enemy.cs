@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float _BackSpeed = 2f;
     private Player p;
+    private SpawnManager _SpawnManager;
     
 
     // Start is called before the first frame update
@@ -17,6 +18,11 @@ public class Enemy : MonoBehaviour
     {
         _rigi = GetComponent<Rigidbody2D>();
         p = GameObject.Find("Player").GetComponent<Player>();
+        _SpawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        if (_SpawnManager == null)
+        {
+            Debug.Log("Spawn is NUll");
+        }
         if (p == null)
         {
             Debug.Log("Player is NULL");
@@ -48,6 +54,8 @@ public class Enemy : MonoBehaviour
         }
         if(other.tag == "Player")
         {
+            _SpawnManager._isdead = true;
+            GetComponent<CapsuleCollider2D>().enabled = false;
             Destroy(p.gameObject);
         }
     }
