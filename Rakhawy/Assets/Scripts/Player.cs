@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     private Vector2 Dir;
     private Rigidbody2D _rigi;
     private UIManager _ui;
-    private int _score = 0;
+    private float _score = 0;
     private Quaternion _lookRotation;
     [SerializeField]
     private float RotationSpeed = 5f;
@@ -76,7 +76,13 @@ public class Player : MonoBehaviour
         }
 
 
-
+        if (_ui.EndOfStreak == true)
+        {
+            _score += (_ui.StreakCounter * 20f) * 1.5f;
+            _ui.ViewScore(_score);
+            _ui.EndOfStreak = false;
+            _ui.StreakCounter = 0;
+        }
 
 
 
@@ -102,6 +108,7 @@ public class Player : MonoBehaviour
 
     public void SetScore()
     {
+        
         if (collectable1 == true)
         {
             _score += 10;
@@ -109,9 +116,13 @@ public class Player : MonoBehaviour
         }
         if (Enemy1 == true)
         {
-            _score += 20;
-            _ui.ViewScore(_score);
+
+                _score += 20f;
+                _ui.ViewScore(_score);
+                _ui.StartStreak();
+
         }
+        
         collectable1 = false;
         Enemy1 = false;
     }
