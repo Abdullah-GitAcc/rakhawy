@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
     private Vector2 Dir;
     private Rigidbody2D _rigi;
     private UIManager _ui;
-    private float _score = 0;
+    
+    public float _score = 0;
     private Quaternion _lookRotation;
     [SerializeField]
     private float RotationSpeed = 5f;
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
     private float _attackSpeed = 4f;
     public bool Enemy1 = false;
     public bool collectable1 = false;
+    public bool IsDead = false;
     
     // Start is called before the first frame update
     void Start()
@@ -32,6 +34,7 @@ public class Player : MonoBehaviour
             Debug.Log("UI_Manager is null");
 
         }
+
         
     }
 
@@ -108,6 +111,8 @@ public class Player : MonoBehaviour
 
     public void SetScore()
     {
+       
+
         
         if (collectable1 == true)
         {

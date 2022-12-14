@@ -54,6 +54,7 @@ public class Enemy : MonoBehaviour
         }
         if(other.tag == "Player")
         {
+            p.IsDead = true;
             _SpawnManager._isdead = true;
             GetComponent<CapsuleCollider2D>().enabled = false;
             Destroy(p.gameObject);

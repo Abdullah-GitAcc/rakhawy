@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField]
     private Text _score, _time, _StreakCounter;
-    private float _timer = 0;
+    public float _timer = 0;
     private float _seconds;
     private float _minutes;
     private string MinutesString = "";
